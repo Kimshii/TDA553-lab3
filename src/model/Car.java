@@ -1,5 +1,6 @@
-package src;
+package src.model;
 import java.awt.*;
+import java.util.List;
 
 public abstract class Car implements Movable {
     private int nrDoors; // Number of doors on the car
@@ -92,39 +93,44 @@ public abstract class Car implements Movable {
  
     public void move() {
         if (turnLeft == true) {
-            x += -currentSpeed;
-            y += currentSpeed;
+            y += -currentSpeed;
+            x += currentSpeed;
 
         } else if (turnRight == true) {
+            y += currentSpeed;
             x += currentSpeed;
-            y += currentSpeed;
         } else {
-            y += currentSpeed;
+            x += currentSpeed;
         }
     }
 
-    public void gas(double amount) {
+    public void tryGas(double amount) {
+        gas(amount);
+    }
+
+    private void gas(double amount) {
         try {
-            if ((amount <= 0 || amount >= 1)) {
-                throw new Exception();
+            if ((amount < 0 || amount > 1)) {
+                throw new IllegalArgumentException();
             } else {
                 incrementSpeed(amount);
             }
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("impossible amount");
+            System.out.println(e);
         }
     }
 
     public void brake(double amount) {
         try {
-            if (amount <= 0 || amount >= 1) {
-                throw new Exception();
+            if (amount < 0 || amount > 1) {
+                throw new IllegalArgumentException();
             } else {
                 decrementSpeed(amount);
 
             }
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("impossible amount");
 
         }
@@ -133,12 +139,12 @@ public abstract class Car implements Movable {
     void incrementSpeed(double amount) {
         try {
             if (currentSpeed >= enginePower) {
-                throw new Exception();
+                throw new IllegalArgumentException();
             } else {
                 currentSpeed = currentSpeed + speedFactor() * amount;
             }
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("the car is already at max speed");
             currentSpeed = enginePower;
         }
@@ -147,12 +153,12 @@ public abstract class Car implements Movable {
     private void decrementSpeed(double amount) {
         try {
             if (currentSpeed <= 0) {
-                throw new Exception();
+                throw new IllegalArgumentException();
             } else {
                 currentSpeed = currentSpeed - speedFactor() * amount;
             }
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("the car is already still");
             currentSpeed = 0;
         }
