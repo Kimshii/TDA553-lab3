@@ -1,7 +1,7 @@
 package src;
 import java.awt.*;
 import java.util.ArrayList;
-import src.model.*;
+import src.modell.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

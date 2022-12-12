@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import src.model.*;
+import src.modell.*;
 
 public class TransportTest {
     
