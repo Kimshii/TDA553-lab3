@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.*;
 
+import src.model.*;
+
 public class ScaniaTest {
     
     @Test

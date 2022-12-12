@@ -4,8 +4,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import src.modell.Car;
-import src.modell.TimerListener;
+import src.model.Car;
+import src.model.TimerListener;
 import src.view.DrawPanel;
 
 import java.awt.*;

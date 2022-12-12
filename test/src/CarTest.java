@@ -1,6 +1,7 @@
 package src;
 import java.awt.*;
 import java.util.ArrayList;
+import src.model.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -72,7 +73,7 @@ public class CarTest {
     public void testSaab_currentSpeed_should_be_unaffected_after_gas(){
         Car testSaab = new Saab95(2, 125, 0, Color.red, "Saab95", 0, 0, false, false);
         testSaab.startEngine();
-        testSaab.gas(1.1);
+        testSaab.tryGas(1.1);
         assertEquals(0.1, testSaab.getCurrentSpeed(), 0.1);
     }
     @Test
@@ -87,7 +88,7 @@ public class CarTest {
     public void testVolvo_currentSpeed_should_be_unaffected_after_gas(){
         Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
         testVolvo.startEngine();
-        testVolvo.gas(1.1);
+        testVolvo.tryGas(1.1);
         assertEquals(0.1, testVolvo.getCurrentSpeed(), 0.1);
     }
     @Test
@@ -101,7 +102,7 @@ public class CarTest {
     @Test
     public void test_increment_speed_saab(){
         Car testSaab = new Saab95(2, 125, 125, Color.red, "Saab95", 2, 5, false, false);
-        testSaab.gas(0.5);
+        testSaab.tryGas(0.5);
         assertEquals(125, testSaab.getCurrentSpeed(), 125);
     }
     @Test
@@ -113,7 +114,7 @@ public class CarTest {
     @Test
     public void test_increment_speed_volvo(){
         Car testVolvo = new Volvo240(4, 100, 100, Color.black, "Volvo240", 3, 7, false, false);
-        testVolvo.gas(0.5);
+        testVolvo.tryGas(0.5);
         assertEquals(100, testVolvo.getCurrentSpeed(), 0.1);
     }
     @Test
